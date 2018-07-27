@@ -1,6 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { gray } from "../utils/colors";
+import React from 'react';
+import { View, Text } from 'react-native';
 
 export default function Deck({ title, questions }) {
   return (

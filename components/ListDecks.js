@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
   FlatList,
   StyleSheet,
   TouchableOpacity
-} from "react-native";
-import { getDecks, clearStorage } from "../utils/api";
-import { AppLoading } from "expo";
-import Deck from "./Deck";
+} from 'react-native';
+import { getDecks, clearStorage } from '../utils/api';
+import { AppLoading } from 'expo';
+import Deck from './Deck';
 
-class ListDecks extends Component {
+export default class ListDecks extends Component {
   state = {
     ready: false,
     decks: {}
@@ -27,10 +27,9 @@ class ListDecks extends Component {
     return (
       <TouchableOpacity
         onPress={() =>
-          this.props.navigation.navigate("ListDeck", { deckId: item.title })
-        }
-      >
-        <Deck title={item.title} questions={item.questions} />;
+          this.props.navigation.navigate('ListDeck', { deck: item })
+        }>
+        <Deck {...item} />;
       </TouchableOpacity>
     );
   };
@@ -64,14 +63,12 @@ class ListDecks extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 40
   },
   title: {
     fontSize: 24
   }
 });
-
-export default ListDecks;

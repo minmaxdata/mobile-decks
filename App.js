@@ -1,17 +1,17 @@
-import React from "react";
-import { Text, View, Platform, StatusBar } from "react-native";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { Text, View, Platform, StatusBar } from 'react-native';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import {
   createBottomTabNavigator,
   createStackNavigator
-} from "react-navigation";
-import ListDecks from "./components/ListDecks";
-import ListDeck from "./components/ListDeck";
-import AddDeck from "./components/AddDeck";
-import AddCard from "./components/AddCard";
-import QuizDeck from "./components/QuizDeck";
-import { purple, white } from "./utils/colors";
-import { Constants } from "expo";
+} from 'react-navigation';
+import ListDecks from './components/ListDecks';
+import ListDeck from './components/ListDeck';
+import AddDeck from './components/AddDeck';
+import AddCard from './components/AddCard';
+import QuizDeck from './components/QuizDeck';
+import { purple, white } from './utils/colors';
+import { Constants } from 'expo';
 
 function FlashCardStatusBar({ backgroundColor, ...props }) {
   return (
@@ -25,7 +25,7 @@ const Tabs = createBottomTabNavigator(
     Decks: {
       screen: ListDecks,
       navigationOptions: {
-        tabBarLabel: "List Decks",
+        tabBarLabel: 'List Decks',
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
         )
@@ -34,7 +34,7 @@ const Tabs = createBottomTabNavigator(
     AddDeck: {
       screen: AddDeck,
       navigationOptions: {
-        tabBarLabel: "Add Deck",
+        tabBarLabel: 'Add Deck',
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="plus-square" size={30} color={tintColor} />
         )
@@ -48,11 +48,11 @@ const Tabs = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: Platform.OS === "ios" ? purple : white,
+      activeTintColor: Platform.OS === 'ios' ? purple : white,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === "ios" ? white : purple,
-        shadowColor: "rgba(0, 0, 0, 0.24)",
+        backgroundColor: Platform.OS === 'ios' ? white : purple,
+        shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowOffset: {
           width: 0,
           height: 3
@@ -70,7 +70,7 @@ const MainNavigator = createStackNavigator({
   ListDeck: {
     screen: ListDeck,
     navigationOptions: {
-      title: "Flashcard",
+      title: 'Flashcard',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple,

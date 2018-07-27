@@ -24,12 +24,13 @@ export default class ListDecks extends Component {
   }
 
   renderItem = ({ item }) => {
+    console.log('renderItem', item);
     return (
       <TouchableOpacity
         onPress={() =>
-          this.props.navigation.navigate('ListDeck', { deck: item })
+          this.props.navigation.navigate('ListDeck', { item: item })
         }>
-        <Deck {...item} />;
+        <Deck item={item} />
       </TouchableOpacity>
     );
   };

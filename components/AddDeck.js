@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -7,24 +7,23 @@ import {
   Platform,
   KeyboardAvoidingView,
   TextInput
-} from "react-native";
+} from 'react-native';
 import {
   getDailyReminderValue,
   clearLocalNotification,
   setLocalNotification
-} from "../utils/helpers";
-import { white, purple } from "../utils/colors";
+} from '../utils/helpers';
+import { white, purple } from '../utils/colors';
+import { getDecks, addDeck } from '../utils/api';
+import TextButton from './TextButton';
 
-import { getDecks, addDeck } from "../utils/api";
-import TextButton from "./TextButton";
 function SubmitBtn({ onPress }) {
   return (
     <TouchableOpacity
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
+        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
       }
-      onPress={onPress}
-    >
+      onPress={onPress}>
       <Text style={styles.submitBtnText}>SUBMIT</Text>
     </TouchableOpacity>
   );
@@ -32,7 +31,7 @@ function SubmitBtn({ onPress }) {
 
 class AddDeck extends Component {
   state = {
-    title: ""
+    title: ''
   };
   submit = () => {
     const { title } = this.state;
@@ -41,12 +40,13 @@ class AddDeck extends Component {
       [id]: { title: title, questions: [] }
     };
     //this.props.navigation.navigate("Deck", { id });
-    console.log("add decks", deck);
-    saveDeckTitle(deck);
+    console.log('add decks', deck);
+
+    addDeck(deck);
 
     // Navigate to home
 
-    this.setState({ title: "" });
+    this.setState({ title: '' });
 
     // Clear local notification
   };
@@ -73,16 +73,16 @@ const styles = StyleSheet.create({
     backgroundColor: white
   },
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
-    alignItems: "center"
+    alignItems: 'center'
   },
   input: {
     width: 200,
     height: 44,
     padding: 0,
     borderWidth: 1,
-    borderColor: "#757575",
+    borderColor: '#757575',
     margin: 50
   },
   iosSubmitBtn: {
@@ -100,19 +100,19 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     height: 45,
     borderRadius: 2,
-    alignSelf: "flex-end",
-    justifyContent: "center",
-    alignItems: "center"
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   submitBtnText: {
     color: white,
     fontSize: 22,
-    textAlign: "center"
+    textAlign: 'center'
   },
   center: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginLeft: 30,
     marginRight: 30
   }

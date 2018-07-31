@@ -2,13 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { gray } from '../utils/colors';
 
-export default function Deck({ item }) {
-  const { title, questions } = item;
+export default function Deck({ deck }) {
+  const { title, questions } = deck;
   return (
     <View style={styles.deck}>
-      <Text>DECK: {JSON.stringify({ item })}</Text>
-      <Text>DECK: {title}</Text>
-      <Text>DECK: {questions.length}</Text>
+      <Text>{title}</Text>
+      <Text>{questions.length}</Text>
     </View>
   );
 }

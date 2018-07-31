@@ -6,38 +6,44 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import { getDecks, clearStorage } from '../utils/api';
+import { getDecks, clearStorage, initialData } from '../utils/api';
 import { AppLoading } from 'expo';
 import Deck from './Deck';
 
 export default class ListDecks extends Component {
-  state = {
-    ready: false,
-    decks: {}
-  };
+  state = { ready: false, decks: {} };
   componentDidMount() {
+    //clearStorage();
     getDecks()
       .then(results => {
         this.setState({ decks: results });
       })
-      .then(() => this.setState(() => ({ ready: true })));
+      .then(() =>
+        this.setState(() => ({
+          ready: true
+        }))
+      );
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state) {
+      getDecks().then(results => {
+        this.setState({ decks: results });
+      });
+    }
+  }
   renderItem = ({ item }) => {
-    console.log('renderItem', item);
     return (
       <TouchableOpacity
         onPress={() =>
-          this.props.navigation.navigate('ListDeck', { item: item })
+          this.props.navigation.navigate('ListDeck', { deck: item })
         }>
-        <Deck item={item} />
+        <Deck deck={item} />
       </TouchableOpacity>
     );
   };
   render() {
     const { ready, decks } = this.state;
 
-    //clearStorage();
     //console.log("ListDecks", Object.keys(decks).length);
     if (ready === false) {
       return <AppLoading />;
@@ -49,11 +55,12 @@ export default class ListDecks extends Component {
         </View>
       );
     }
+    const data = Object.values(decks);
 
     return (
       <View style={styles.container}>
         <FlatList
-          data={Object.values(decks)}
+          data={data}
           renderItem={this.renderItem}
           keyExtractor={item => item.title}
         />

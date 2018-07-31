@@ -8,46 +8,39 @@ import {
   Alert
 } from 'react-native';
 import Deck from './Deck';
-import { gray } from '../utils/colors';
-function AddCardButton({ onPress }) {
-  return (
-    <TouchableOpacity
-      style={
-        Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn
-      }
-      onPress={onPress}>
-      <Text style={styles.submitBtnText}>Add Card</Text>
-    </TouchableOpacity>
-  );
-}
+import { white, purple, gray } from '../utils/colors';
 
+addCard = () => {};
 class ListDeck extends Component {
-  onPressHandle() {
-    Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
-      [
-        {
-          text: 'Ask me later',
-          onPress: () => console.log('Ask me later pressed')
-        },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel'
-        },
-        { text: 'OK', onPress: () => console.log('OK Pressed') }
-      ],
-      { cancelable: false }
-    );
-  }
   render() {
-    const { item } = this.props.navigation.state.params;
+    const { deck } = this.props.navigation.state.params;
     return (
       <View>
-        <Text>LISTDECK:{JSON.stringify(item)}</Text>
-        <Deck item={item} />
-        <AddCardButton onPress={this.onPressHandle} />
+        <Text>{deck.title}</Text>
+        <Text>{deck.questions.length}</Text>
+
+        <TouchableOpacity
+          style={
+            Platform.OS === 'ios'
+              ? styles.iosSubmitBtn
+              : styles.AndroidSubmitBtn
+          }
+          onPress={() =>
+            this.props.navigation.navigate('AddCard', { deck: deck })
+          }>
+          <Text style={styles.submitBtnText}>Add Card</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={
+            Platform.OS === 'ios'
+              ? styles.iosSubmitBtn
+              : styles.AndroidSubmitBtn
+          }
+          onPress={() =>
+            this.props.navigation.navigate('QuizDeck', { deck: deck })
+          }>
+          <Text style={styles.submitBtnText}>Quiz Deck</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -58,6 +51,38 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: gray,
     padding: 15
+  },
+  submitBtnText: {
+    color: white,
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  input: {
+    width: 200,
+    height: 44,
+    padding: 0,
+    borderWidth: 1,
+    borderColor: '#757575',
+    margin: 50
+  },
+  iosSubmitBtn: {
+    backgroundColor: purple,
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40
+  },
+  AndroidSubmitBtn: {
+    backgroundColor: purple,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

@@ -78,6 +78,30 @@ const MainNavigator = createStackNavigator({
         marginTop: -20
       }
     }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+        height: 60,
+        marginTop: -20
+      }
+    }
+  },
+  QuizDeck: {
+    screen: QuizDeck,
+    navigationOptions: {
+      title: 'Quiz Deck',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+        height: 60,
+        marginTop: -20
+      }
+    }
   }
 });
 export default class App extends React.Component {

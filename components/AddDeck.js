@@ -33,6 +33,11 @@ class AddDeck extends Component {
   state = {
     title: ''
   };
+  toDeck = deck => {
+    this.props.navigation.navigate('ListDeck', {
+      item: deck
+    });
+  };
   submit = () => {
     const { title } = this.state;
     const id = title.toLowerCase();
@@ -42,9 +47,14 @@ class AddDeck extends Component {
     //this.props.navigation.navigate("Deck", { id });
     console.log('add decks', deck);
 
-    addDeck(deck);
-
-    // Navigate to home
+    addDeck(deck)
+      .then(() => {
+        return this.toDeck(deck);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // Navigate to deck view
 
     this.setState({ title: '' });
 
@@ -54,6 +64,7 @@ class AddDeck extends Component {
     const { title } = this.state;
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <Text> What is the Title for your new FlashCard Deck?</Text>
         <TextInput
           placeholder="FlashCard Topic"
           style={styles.input}

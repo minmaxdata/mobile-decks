@@ -4,20 +4,20 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Platform,
-  Alert
+  Platform
 } from 'react-native';
-import Deck from './Deck';
-import { white, purple, gray } from '../utils/colors';
+import { white, purple } from '../utils/colors';
 
 addCard = () => {};
 class ListDeck extends Component {
   render() {
     const { deck } = this.props.navigation.state.params;
     return (
-      <View>
-        <Text>{deck.title}</Text>
-        <Text>{deck.questions.length}</Text>
+      <View style={styles.container}>
+        <View style={styles.deck}>
+          <Text style={{ fontSize: 40 }}> {deck.title}</Text>
+          <Text style={{ fontSize: 20 }}>{deck.questions.length} Cards</Text>
+        </View>
 
         <TouchableOpacity
           style={
@@ -49,7 +49,7 @@ class ListDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: gray,
+    backgroundColor: white,
     padding: 15
   },
   submitBtnText: {
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center'
   },
+
   input: {
     width: 200,
     height: 44,
@@ -81,6 +82,12 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 2,
     alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  deck: {
+    flex: 1,
+    marginBottom: 12,
     justifyContent: 'center',
     alignItems: 'center'
   }

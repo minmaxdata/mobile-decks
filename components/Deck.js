@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { gray } from '../utils/colors';
 
 export default function Deck({ deck }) {
   const { title, questions } = deck;

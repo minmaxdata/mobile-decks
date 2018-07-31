@@ -54,9 +54,9 @@ class AddCard extends Component {
   render() {
     const { question, answer } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.title}> {this.state.title}</Text>
-        <View style={styles.container}>
+        <View>
           <TextInput
             placeholder="Question"
             style={styles.input}

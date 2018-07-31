@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Platform, StatusBar } from 'react-native';
+import { View, Platform, StatusBar } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import {
   createBottomTabNavigator,

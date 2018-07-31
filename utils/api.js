@@ -37,22 +37,16 @@ export function initialData() {
   return data;
 }
 
-/*
-`AsyncStorage.getItem(DECKS_STORAGE_KEY).then(result => alert(result))`?
-*/
 export const getDeck = deckId => {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(result => {
     const decks = JSON.parse(result);
-    console.log('getDeck ', decks);
     return decks[deckId];
   });
 };
 export function addDeck(deck) {
-  console.log('addDeck', deck);
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck));
 }
 export function addCardToDeck(title, card) {
-  console.log('addCardToDeck', title, card);
   return AsyncStorage.mergeItem(
     DECKS_STORAGE_KEY,
     JSON.stringify({
@@ -61,7 +55,6 @@ export function addCardToDeck(title, card) {
   );
 }
 export function clearStorage() {
-  console.log('clearStorage');
   return AsyncStorage.removeItem(DECKS_STORAGE_KEY);
 }
 /*

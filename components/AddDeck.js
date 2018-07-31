@@ -15,7 +15,6 @@ import {
 } from '../utils/helpers';
 import { white, purple } from '../utils/colors';
 import { getDecks, addDeck } from '../utils/api';
-import TextButton from './TextButton';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -44,8 +43,6 @@ class AddDeck extends Component {
     const deck = {
       [id]: { title: title, questions: [] }
     };
-    //this.props.navigation.navigate("Deck", { id });
-    console.log('add decks', deck);
 
     addDeck(deck)
       .then(() => {
@@ -54,7 +51,6 @@ class AddDeck extends Component {
       .catch(err => {
         console.log(err);
       });
-    // Navigate to deck view
 
     this.setState({ title: '' });
 

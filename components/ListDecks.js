@@ -6,14 +6,13 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import { getDecks, clearStorage, initialData } from '../utils/api';
+import { getDecks } from '../utils/api';
 import { AppLoading } from 'expo';
 import Deck from './Deck';
 
 export default class ListDecks extends Component {
   state = { ready: false, decks: {} };
   componentDidMount() {
-    //clearStorage();
     getDecks()
       .then(results => {
         this.setState({ decks: results });

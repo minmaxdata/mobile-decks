@@ -26,10 +26,9 @@ let data = {
     ]
   }
 };
-export function getDecks() {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(results => {
-    return results === null ? initialData() : JSON.parse(results);
-  });
+export async function getDecks() {
+  const results = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+  return results === null ? initialData() : JSON.parse(results);
 }
 
 export function initialData() {
@@ -37,11 +36,10 @@ export function initialData() {
   return data;
 }
 
-export const getDeck = deckId => {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(result => {
-    const decks = JSON.parse(result);
-    return decks[deckId];
-  });
+export const getDeck = async deckId => {
+  const result = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+  const decks = JSON.parse(result);
+  return decks[deckId];
 };
 export function addDeck(deck) {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck));

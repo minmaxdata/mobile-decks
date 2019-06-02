@@ -14,7 +14,7 @@ import {
   setLocalNotification
 } from '../utils/helpers';
 import { white, purple } from '../utils/colors';
-import { getDecks, addDeck } from '../utils/api';
+import { addDeck } from '../utils/api';
 
 function SubmitBtn({ onPress }) {
   return (

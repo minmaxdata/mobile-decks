@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 Project: mobile-decks
 
+tested on IOS
+
 - Install dependencies
-  - `npm install`
-  - `yarn start`
+  - `yarn install`
+  - `expo start`

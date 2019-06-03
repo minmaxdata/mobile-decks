@@ -8,10 +8,12 @@ import {
 } from 'react-native';
 import { white, purple } from '../utils/colors';
 
-addCard = () => {};
+
+addCard = () => { };
 class ListDeck extends Component {
   render() {
     const { deck } = this.props.navigation.state.params;
+    console.log('show new deck ')
     return (
       <View style={styles.container}>
         <View style={styles.deck}>

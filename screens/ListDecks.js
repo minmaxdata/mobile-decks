@@ -6,13 +6,14 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import { getDecks } from '../utils/api';
+import { getDecks, clearStorage } from '../utils/api';
 import { AppLoading } from 'expo';
 import Deck from './Deck';
 
 export default class ListDecks extends Component {
   state = { ready: false, decks: {} };
   componentDidMount() {
+    clearStorage();
     getDecks()
       .then(results => {
         this.setState({ decks: results });
@@ -23,7 +24,7 @@ export default class ListDecks extends Component {
         }))
       );
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState, prevProps) {
     if (prevState !== this.state) {
       getDecks().then(results => {
         this.setState({ decks: results });
@@ -61,7 +62,7 @@ export default class ListDecks extends Component {
         <FlatList
           data={data}
           renderItem={this.renderItem}
-          keyExtractor={item => item.title}
+          keyExtractor={(item, index) => item.id.toString()}
         />
       </View>
     );

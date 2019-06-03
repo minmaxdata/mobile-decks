@@ -8,11 +8,6 @@ import {
   KeyboardAvoidingView,
   TextInput
 } from 'react-native';
-import {
-  getDailyReminderValue,
-  clearLocalNotification,
-  setLocalNotification
-} from '../utils/helpers';
 import { white, purple } from '../utils/colors';
 import { addDeck } from '../utils/api';
 
@@ -37,6 +32,9 @@ class AddDeck extends Component {
       item: deck
     });
   };
+  updateText = (title) => {
+    this.setState({ title })
+  };
   submit = () => {
     const { title } = this.state;
     const id = title.toLowerCase();
@@ -54,7 +52,6 @@ class AddDeck extends Component {
 
     this.setState({ title: '' });
 
-    // Clear local notification
   };
   render() {
     const { title } = this.state;
@@ -65,7 +62,7 @@ class AddDeck extends Component {
           placeholder="FlashCard Topic"
           style={styles.input}
           value={title}
-          onChangeText={title => this.setState({ title })}
+          onChangeText={() => this.updateText(title)}
         />
         <SubmitBtn onPress={this.submit} />
       </KeyboardAvoidingView>

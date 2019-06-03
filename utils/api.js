@@ -4,6 +4,7 @@ const DECKS_STORAGE_KEY = 'FlashCards:decks';
 let data = {
   React: {
     title: 'React',
+    id: 1,
     questions: [
       {
         question: 'What is React?',
@@ -16,6 +17,7 @@ let data = {
     ]
   },
   JavaScript: {
+    id: 2,
     title: 'JavaScript',
     questions: [
       {

@@ -60,7 +60,7 @@ class QuizDeck extends Component {
               ]}>
               <Text style={{ flex: 1, fontSize: 16 }}>{`${index + 1}/${
                 questions.length
-              }`}</Text>
+                }`}</Text>
               <Text style={{ flex: 4, fontSize: 24 }}> Quiz on {title}</Text>
             </View>
             <View style={styles.content}>
@@ -69,10 +69,10 @@ class QuizDeck extends Component {
                   {questions[index].question}
                 </Text>
               ) : (
-                <Text style={styles.contentText}>
-                  {questions[index].answer}
-                </Text>
-              )}
+                  <Text style={styles.contentText}>
+                    {questions[index].answer}
+                  </Text>
+                )}
             </View>
             <View>
               <TouchableOpacity
@@ -95,18 +95,18 @@ class QuizDeck extends Component {
             </View>
           </View>
         ) : (
-          <View style={styles.container}>
-            <Text style={styles.title}>
-              Your score: {score} of {questions.length}
-            </Text>
-            <TouchableOpacity style={styles.iosBtn} onPress={this.RepeatQuiz}>
-              <Text style={styles.btnText}> Repeat Quiz </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.iosBtn} onPress={this.toDeck}>
-              <Text style={styles.btnText}> Return to Flashcard Deck </Text>
-            </TouchableOpacity>
-          </View>
-        )}
+            <View style={styles.container}>
+              <Text style={styles.title}>
+                Your score: {score} of {questions.length}
+              </Text>
+              <TouchableOpacity style={styles.iosBtn} onPress={this.RepeatQuiz}>
+                <Text style={styles.btnText}> Repeat Quiz </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.iosBtn} onPress={this.toDeck}>
+                <Text style={styles.btnText}> Return to Flashcard Deck </Text>
+              </TouchableOpacity>
+            </View>
+          )}
       </View>
     );
   }

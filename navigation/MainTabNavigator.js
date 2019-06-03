@@ -5,11 +5,11 @@ import {
 } from 'react-navigation';
 import { Platform } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
-import ListDecks from '../components/ListDecks';
-import ListDeck from '../components/ListDeck';
-import AddDeck from '../components/AddDeck';
-import AddCard from '../components/AddCard';
-import QuizDeck from '../components/QuizDeck';
+import ListDecks from '../screens/ListDecks';
+import ListDeck from '../screens/ListDeck';
+import AddDeck from '../screens/AddDeck';
+import AddCard from '../screens/AddCard';
+import QuizDeck from '../screens/QuizDeck';
 import { purple, white } from '../utils/colors';
 
 const Tabs = createBottomTabNavigator(
@@ -55,7 +55,13 @@ const Tabs = createBottomTabNavigator(
         }
     }
 );
-export default MainTabNavigator = createStackNavigator({
+const ListDecksStack = createStackNavigator({
+    Decks: ListDecks
+});
+ListDecksStack.navigationOptions = {
+
+};
+export default MainStackNavigator = createStackNavigator({
     Home: {
         screen: Tabs
     },
